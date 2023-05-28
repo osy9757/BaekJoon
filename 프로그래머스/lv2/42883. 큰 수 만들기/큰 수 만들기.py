@@ -4,9 +4,6 @@ def solution(number, k):
         while k > 0 and answer and answer[-1] < num:
             answer.pop()
             k -= 1
-        answer.append(num)  
-    if k > 0:
-        answer = answer[:-k]
-           
+        answer.append(num)             
     
-    return ''.join(answer)
+    return ''.join(answer[:len(answer) - k])
