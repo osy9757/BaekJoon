@@ -2,7 +2,7 @@ def solution(name):
     length = len(name)
 
     count = [min(ord(char) - ord('A'), ord('Z') - ord(char) + 1) for char in name]
-
+    
     move = length - 1
     for i in range(length):
         index = i + 1
