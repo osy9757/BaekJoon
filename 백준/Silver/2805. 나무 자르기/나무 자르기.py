@@ -1,18 +1,19 @@
 N, M = map(int, input().split())
-tree = list(map(int, input().split()))
-start, end = 1, max(tree) 
+trees = list(map(int, input().split()))
 
-while start <= end: 
-    mid = (start+end) // 2
+start = 0
+end = max(trees)
+result = 0
+
+while start <= end:
+    mid = (start + end) // 2
     
-    log = 0
-    for i in tree:
-        if i >= mid:
-            log += i - mid
+    cut_length = sum([tree - mid for tree in trees if tree > mid])
     
-  
-    if log >= M:
+    if cut_length >= M:
+        result = mid
         start = mid + 1
     else:
         end = mid - 1
-print(end)
+
+print(result)
