@@ -1,20 +1,12 @@
-from heapq import heappop, heappush
-
 def solution(book_time):
-    answer = 1
-    
-    book_time_ref = [(int(s[:2]) * 60 + int(s[3:]), int(e[:2]) * 60 + int(e[3:])) for s, e in book_time]
-    book_time_ref.sort()
-    
-    heap = []
-    for s, e in book_time_ref:
-        if not heap:
-            heappush(heap,e)
-            continue
-        if heap[0] <= s:
-            heappop(heap)
-        else:
-            answer += 1
-        heappush(heap,e+10)
-    
+    answer = 0    
+    book_time.sort(key=lambda x: x[0])
+    book_time_minute = [ (int(s_time[:2])*60 + int(s_time[-2:]), int(e_time[:2])*60 + int(e_time[-2:])+10) 
+                        for s_time, e_time in book_time]
+    for i in range(0,len(book_time_minute)):
+        count = 0
+        for j in range(i-1,-1,-1):
+            if book_time_minute[i][0] < book_time_minute[j][1]:
+                count+=1
+        answer = max(answer,count+1)
     return answer
