@@ -3,13 +3,10 @@ def solution(k, tangerine):
     size_count = {}
     
     for size in tangerine:
-        if size in size_count:
-            size_count[size] += 1
-        else:
-            size_count[size] = 1
+        size_count[size] = size_count.get(size, 0) + 1
 
-    count_size = [num for num in size_count.values()]
-    count_size.sort(reverse = True)
+    count_size = sorted(size_count.values(), reverse=True)
+    
     for num in count_size:
         if k > 0:
             k -= num
