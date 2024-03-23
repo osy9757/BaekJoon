@@ -1,0 +1,15 @@
+SELECT 
+    h.HOUR,
+    COUNT(a.ANIMAL_ID) AS COUNT
+FROM 
+    (
+        SELECT LEVEL - 1 AS HOUR
+        FROM DUAL
+        CONNECT BY LEVEL <= 24
+    ) h
+LEFT JOIN 
+    ANIMAL_OUTS a ON h.HOUR = TO_NUMBER(TO_CHAR(a.DATETIME, 'HH24'))
+GROUP BY 
+    h.HOUR
+ORDER BY 
+    h.HOUR;
