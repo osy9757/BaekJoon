@@ -1,6 +1,6 @@
 # [level 2] 디펜스 게임 - 142085 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/142085) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/142085?language=python3) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 03월 25일 03:34:06
+2024년 03월 25일 03:34:53
 
 ### 문제 설명
 
