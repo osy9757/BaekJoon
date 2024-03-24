@@ -7,9 +7,10 @@ FROM
         FROM DUAL
         CONNECT BY LEVEL <= 24
     ) h
-LEFT JOIN 
+LEFT outer JOIN 
     ANIMAL_OUTS a ON h.HOUR = TO_NUMBER(TO_CHAR(a.DATETIME, 'HH24'))
 GROUP BY 
     h.HOUR
 ORDER BY 
     h.HOUR;
+    
