@@ -1,7 +1,14 @@
-SELECT TO_CHAR(SALES_DATE , 'YYYY') AS YEAR , TO_NUMBER(TO_CHAR(SALES_DATE ,'MM')) AS MONTH ,
-B.GENDER AS GENDER, COUNT(DISTINCT(A.USER_ID)) AS USERS
-FROM ONLINE_SALE A
-INNER JOIN USER_INFO B ON B.USER_ID = A.USER_ID
-GROUP BY TO_CHAR(SALES_DATE , 'YYYY') , TO_NUMBER(TO_CHAR(SALES_DATE ,'MM')) , B.GENDER 
-HAVING B.GENDER IS NOT NULL
-ORDER BY YEAR , MONTH , GENDER
+select to_char(b.sales_date,'YYYY') as YEAR,
+        to_number(to_char(b.sales_date,'MM')) as MONTH,
+        a.gender, 
+        count(distinct(a.user_id)) as users
+from user_info a,(
+    select user_id, sales_date
+    from online_sale
+    ) b
+where a.user_id = b.user_id
+group by to_char(b.sales_date,'YYYY'), 
+        to_number(to_char(b.sales_date,'MM')),
+        a.gender
+having gender is not null
+order by year,month,gender
